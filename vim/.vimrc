@@ -24,6 +24,10 @@ Plug 'tpope/vim-fugitive'
 " ----- tmux ----------------------------------------------------------
 Plug 'christoomey/vim-tmux-navigator'
 
+" ----- language suport -----------------------------------------------
+Plug 'elmcast/elm-vim'
+Plug 'elixir-lang/vim-elixir'
+
 call plug#end()
 
 
@@ -39,13 +43,17 @@ syntax on
 
 set mouse=a
 
+set backspace=2
+
+set relativenumber
+
 let mapleader = ","
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 15
 let g:netrw_banner = 0
 
 " This will toggle the file explorer on/off
-nmap <leader>d :Lex<CR> 
+nmap <leader>d :Lex<CR>
 
 " ----- Plugin-Specific Settings --------------------------------------
 
@@ -58,6 +66,9 @@ set background=dark
 
 " Set the colorscheme
 colorscheme solarized
+
+" Search and replace word under cursor using F4
+noremap <F4> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
 
 
 " ----- vim-airline/vim-airline settings -----
@@ -108,4 +119,8 @@ hi clear SignColumn
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 
+" ----- sheerun/vim-polyglot settings
+let g:polyglot_disabled = ['elm', 'elixir']
 
+" ----- elmcast/elm-vim settings -----
+let g:elm_format_autosave = 1
